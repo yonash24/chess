@@ -3,16 +3,16 @@ from Piece import Piece
 
 class Pawn(Piece):
 
-    def __init__(self, name, value, color):
+    def __init__(self,name,  value, color):
         self.piece = {name, value}
         self.color = color
 
-    # prevent pieces to moove to where they cant
-    def cannot_moove(self):
+    # prevent pieces to move to where they cant
+    def cannot_move(self):
         pass
 
-    # make the piece moove
-    def moove(self):
+    # make the piece move
+    def move(self):
         pass
 
     # make one piece to "eat" the opponent piece

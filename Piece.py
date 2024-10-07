@@ -9,14 +9,14 @@ class Piece(ABC):
         self.piece = {name,value}
         self.color = color
 
-    #prevent pieces to moove to where they cant
+    #prevent pieces to move to where they cant
     @abstractmethod
-    def cannot_moove(self):
+    def cannot_move(self):
         pass
 
-    #make the piece moove
+    #make the piece move
     @abstractmethod
-    def moove(self):
+    def move(self):
         pass
 
     #make one piece to "eat" the opponent piece

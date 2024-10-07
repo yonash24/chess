@@ -7,12 +7,12 @@ class Queen(Bishop, Rook):
         self.piece = {name, value}
         self.color = color
 
-    # prevent pieces to moove to where they cant
-    def cannot_moove(self):
+    # prevent pieces to move to where they cant
+    def cannot_move(self):
         pass
 
-    # make the piece moove
-    def moove(self):
+    # make the piece move
+    def move(self):
         pass
 
     # make one piece to "eat" the opponent piece
@@ -26,3 +26,4 @@ class Queen(Bishop, Rook):
     # show if there is a check situation on the board
     def check(self):
         pass
+
