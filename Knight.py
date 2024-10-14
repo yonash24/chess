@@ -7,10 +7,6 @@ class Knight(Piece):
         self.piece = {name, value}
         self.color = color
 
-    # prevent pieces to move to where they cant
-    def cannot_move(self):
-        pass
-
     # make the piece move
     def move(self):
         pass

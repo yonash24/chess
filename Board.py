@@ -1,11 +1,5 @@
 import tkinter as tk
 
-from numpy import roots
-
-#creating the main window
-window = tk.Tk()
-window.title("ChessBoard")
-
 
 BOARD_SIZE = 8  #define the size of the board
 CELL_SIZE = 60  #define the size of each cell
@@ -24,7 +18,7 @@ initial_board = [
     ['.', '.', '.', '.', '.', '.', '.', '.'],  # Row 4 (Empty)
     ['.', '.', '.', '.', '.', '.', '.', '.'],  # Row 5 (Empty)
     ['.', '.', '.', '.', '.', '.', '.', '.'],  # Row 6 (Empty)
-    ['BP', 'BP', 'BP', 'BP', 'BP', 'BP', 'BP', 'BP'],  # Row 7 (Black pawns)
+    ['BP', 'BP', 'BP', 'BP',  'BP', 'BP', 'BP', 'BP'],  # Row 7 (Black pawns)
     ['BR', 'BN', 'BB', 'BQ', 'BK', 'BB', 'BN', 'BR'],  # Row 8 (Black pieces)
 ]
 
@@ -37,6 +31,9 @@ class Board:
         self.selected_piece = None  # stores the coordinate of the selected piece
         self.current_turn = 'whit'  # track of how turn is it, white start first
         self.create_board()  #call the method create_board to create and display the chess board
+        self.wturn = True
+        self.bturn = False
+
 
     # method that create the chess board
     def create_board(self):

@@ -1,18 +1,13 @@
 from abc import ABC, abstractmethod
-
+import Board
 
 class Piece(ABC):
 
     # general constructor
     @abstractmethod
-    def __init__(self, name ,value, color):
-        self.piece = {name,value}
+    def __init__(self, color, row, col):
+        self.position = (row,col)
         self.color = color
-
-    #prevent pieces to move to where they cant
-    @abstractmethod
-    def cannot_move(self):
-        pass
 
     #make the piece move
     @abstractmethod
@@ -33,3 +28,4 @@ class Piece(ABC):
     @abstractmethod
     def check(self):
         pass
+

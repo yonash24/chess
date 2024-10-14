@@ -1,27 +1,49 @@
+from mouseinfo import position
+from Bishop import Bishop
+from Board import Board
+from Knight import Knight
 from Piece import Piece
+from Queen import Queen
+from Rook import Rook
 
 
-class Pawn(Piece):
+class Pawn(Piece,Queen,Knight,Bishop,Rook):
 
-    def __init__(self,name,  value, color):
-        self.piece = {name, value}
-        self.color = color
+    symbol = '\u2659' if Piece.__name__ == 'WP' else '\u265F'
 
-    # prevent pieces to move to where they cant
-    def cannot_move(self):
-        pass
+    def __init__(self, color, row, col):
+        super.__init__(color, row, col)
+
+
+    def get_row(self):
+        return self.position.row
+
+    def get_col(self):
+        return  self.position.col
 
     # make the piece move
     def move(self):
-        pass
+
+        #if the pawn get to the enemy line
+        #turn him into a queen bishop knigt or rook
+        if self.position.row == 7 or self.position.row == 0:
+            upgrade_pawn = input("choose what to turn your pawn to: queen/rook/bishop/knight")
+            upgrade_pawn.lower()
+            if upgrade_pawn == 'queen':
+                pass
+        elif self.threat() == True:
+            self.eat()
+        else:
+            self.position.row += 1
+
 
     # make one piece to "eat" the opponent piece
     def eat(self):
-        pass
+        if
 
     # show what piece threat on other piece on the board
-    def threaten(self):
-        pass
+    def threat(self):
+        if self.position
 
     # show if there is a check situation on the board
     def check(self):

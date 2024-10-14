@@ -7,10 +7,6 @@ class King(Piece):
         self.piece = {name, value}
         self.color = color
 
-    # prevent pieces to move to where they cant
-    def cannot_moove(self):
-        pass
-
     # make the piece move
     def move(self):
         pass
