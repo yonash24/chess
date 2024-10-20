@@ -1,4 +1,3 @@
-from mouseinfo import position
 from Bishop import Bishop
 from Board import Board
 from Knight import Knight
@@ -39,11 +38,23 @@ class Pawn(Piece,Queen,Knight,Bishop,Rook):
 
     # make one piece to "eat" the opponent piece
     def eat(self):
-        if
+        if  self.threat() == True:
+            self.position.row += 1
+            self.position.col += 1
+
 
     # show what piece threat on other piece on the board
     def threat(self):
-        if self.position
+        if self.color == "white":
+            if self.board[][] != None or (self.get_row+1, self.get_col-1) != None:
+                return True
+            else:
+                return False
+        else:
+            if (self.get_row-1, self.get_col+1) != None or (self.get_row-1, self.get_col+1) != None:
+                return True
+            else:
+                return False
 
     # show if there is a check situation on the board
     def check(self):

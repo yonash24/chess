@@ -2,9 +2,8 @@ from Piece import Piece
 
 class Rook(Piece):
 
-    def __init__(self, name, value, color):
-        self.piece = {name, value}
-        self.color = color
+    def __init__(self, color, row, col):
+        super.__init__(color,row,col)
 
     # make the piece move
     def move(self):
