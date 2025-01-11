@@ -22,7 +22,6 @@ class Pawn(Piece,Queen,Knight,Bishop,Rook):
 
     # make the piece move
     def move(self):
-
         #if the pawn get to the enemy line
         #turn him into a queen bishop knigt or rook
         if self.position.row == 7 or self.position.row == 0:
@@ -34,14 +33,6 @@ class Pawn(Piece,Queen,Knight,Bishop,Rook):
             self.eat()
         else:
             self.position.row += 1
-
-
-    # make one piece to "eat" the opponent piece
-    def eat(self):
-        if  self.threat() == True:
-            self.position.row += 1
-            self.position.col += 1
-
 
     # show what piece threat on other piece on the board
     def threat(self):
