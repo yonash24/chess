@@ -1,61 +1,57 @@
-from Bishop import Bishop
-from Board import Board
-from Knight import Knight
-from Piece import Piece
-from Queen import Queen
-from Rook import Rook
+import  Board
 
-
-class Pawn(Piece,Queen,Knight,Bishop,Rook):
-
-    symbol = '\u2659' if Piece.__name__ == 'WP' else '\u265F'
+class pawn():
 
     def __init__(self, color, row, col):
-        super.__init__(color, row, col)
+        super().__init__(color, row, col)
 
 
     def get_row(self):
-        return self.position.row
+        return self.position[0]
 
     def get_col(self):
-        return  self.position.col
+        return  self.position[1]
+    
+
 
     # make the piece move
-    def move(self):
-
+    def move(self,new_row,new_col, board):
         #if the pawn get to the enemy line
         #turn him into a queen bishop knigt or rook
-        if self.position.row == 7 or self.position.row == 0:
-            upgrade_pawn = input("choose what to turn your pawn to: queen/rook/bishop/knight")
-            upgrade_pawn.lower()
-            if upgrade_pawn == 'queen':
-                pass
-        elif self.threat() == True:
-            self.eat()
+        if self.color == "white":
+            direction = self.get_row +1 
         else:
-            self.position.row += 1
-
-
-    # make one piece to "eat" the opponent piece
-    def eat(self):
-        if  self.threat() == True:
-            self.position.row += 1
-            self.position.col += 1
-
+            direction = self.get_row-1
+        
+        if board[direction][self.get_col] != '-' or direction > 7 or direction < 0 or new_row > 7 or new_col < 0 or new_row > 7 or new_row < 0 or new_row != direction or new_col != self.get_col+1 or new_col != self.get_col-1:
+            print("invalid moove")
+        
+        if new_row == direction and new_col == self.get_col and board.is_empty(new_row, new_col):
+            self.position = (new_row, new_col)
+                
+        elif new_row == direction and (new_col == self.get_col+1 or new_col == self.get_col-1) and board[new_row][new_col].color != self.color:
+            self.position = (new_row, new_col)
+          
+        else:
+            print("invalid moove")
+                
 
     # show what piece threat on other piece on the board
-    def threat(self):
-        if self.color == "white":
-            if self.board[][] != None or (self.get_row+1, self.get_col-1) != None:
-                return True
-            else:
-                return False
+    def threat(self,board):
+        if self.color == "white" and (board[self.get_row+1][self.get_col+1] != '-' or board[self.get_row+1][self.get_col-1] != '-'):
+            return True
         else:
-            if (self.get_row-1, self.get_col+1) != None or (self.get_row-1, self.get_col+1) != None:
-                return True
-            else:
-                return False
+            return False
+        
+        if self.color == "black" and (board[self.get_row-1][self.get_col+1] != '-' or board[self.get_row-1][self.get_col-1] != '-'):
+            return True
+        else:
+            return False
+        
 
     # show if there is a check situation on the board
-    def check(self):
-        pass
+    def check(self,board):
+        if self.threat and (type(board[self.get_row+1][self.get_col+1]) == "King" or type(board[self.get_row+1][self.get_col-1]) == "King"):
+            return True
+        else:
+            return False
