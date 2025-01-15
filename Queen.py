@@ -10,10 +10,6 @@ class Queen(Bishop, Rook):
     def move(self):
         pass
 
-    # make one piece to "eat" the opponent piece
-    def eat(self):
-        pass
-
     # show what piece threat on other piece on the board
     def threaten(self):
         pass

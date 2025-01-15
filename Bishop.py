@@ -1,4 +1,7 @@
 from Piece import Piece
+import King
+import Board
+
 
 class Bishop(Piece):
 
@@ -61,6 +64,8 @@ class Bishop(Piece):
 
     # show if there is a check situation on the board
     def check(self,board):
+               
+        directions = [(1,1), (1,-1), (-1,1), (-1,-1)]
         
         for row_step, col_step in directions:
             row = self.get_row + row_step
