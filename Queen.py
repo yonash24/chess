@@ -4,7 +4,7 @@ from Rook import Rook
 class Queen(Bishop, Rook):
 
     def __init__(self, color, row, col):
-        super.__init__(color, row, col)
+        super().__init__(color, row, col)
 
     # make the piece move
     def move(self):
