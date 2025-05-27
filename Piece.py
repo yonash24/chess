@@ -1,31 +1,32 @@
 from abc import ABC, abstractmethod
-import Board
 
 class Piece(ABC):
-
-    # general constructor
-    @abstractmethod
     def __init__(self, color, row, col):
-        self.position = (row,col)
-        self.color = color
+        self.color = color  # "white" or "black"
+        self.position = (row, col)
 
-    #make the piece move
+    def get_row(self):
+        return self.position[0]
+
+    def get_col(self):
+        return self.position[1]
+
     @abstractmethod
-    def move(self):
+    def move(self, new_row, new_col, board):
+        """Move the piece to a new location if valid"""
         pass
 
-    #make one piece to "eat" the opponent piece
     @abstractmethod
-    def eat(self):
+    def eat(self, new_row, new_col, board):
+        """Capture an opponent piece if valid"""
         pass
 
-    #show what piece threat on other piece on the board
     @abstractmethod
-    def threaten(self):
+    def threaten(self, board):
+        """Return a list of positions this piece threatens"""
         pass
 
-    #show if there is a check situation on the board
     @abstractmethod
-    def check(self):
+    def check(self, board):
+        """Return True if this piece checks the opponent king"""
         pass
-
